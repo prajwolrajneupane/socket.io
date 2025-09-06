@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <div class="messages"></div>
+    <input type="text" id="message" placeholder="enter message">
+ <button id="sendBtn">Send</button>   
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- this allows browser to connect to socket.io -->
+    <script>
+        const socket=io();
+        // it upgrades that connection(http ko header ma upgrade halera masta send) to a WebSocket (if the server supports it).
+        // this hai this io() vanne xotu does that
+        const sendBtn=document.getElementById("sendBtn");
+        const messageInput=document.getElementById("message");
+        const allMessages=document.querySelector(".messages")
+socket.on("message",(message)=>
+
+{
+
+    const p=document.createElement("p");
+    allMessages.appendChild(p);
+    p.innerText=message;
+    console.log("front bata aako:"+message)}
+// back bata aaira message console ma send
+)
+        sendBtn.addEventListener("click",(e)=>{
+    const message=messageInput.value;
+    socket.emit("niggakomessage",message)
+    // send the message to the server using the event name niggakomessage
+    //emit means send a message/event
+
+    // hamle k vanya ta vanda, hey send an event called niggakomessage with the data/message to the other side of the connection
+})
+
+    </script>
+<h1>chat do</h1>    
+</body>
+</html>
+
+<!-- ani how is this connected to server vanera sochne ho vane, this is being served in index.js.. ra by default nei tyo nei server banxa who is serving 
+-->
