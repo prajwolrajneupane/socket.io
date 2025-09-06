@@ -12,13 +12,13 @@ const io=new Server(server);// we passed our http serverto socket.io, now socket
 // updgrade header aaune front bata honta
 
 // socket io
-io.on("connection",(nigga)=>{
+io.on("connection",(manxey)=>{
     // io.on("connection" Runs whenever a new client (browser) connects via Socket.IO.
-    // nigga represents the connected client socket
-    console.log("a new user has connected",nigga.id)
-    //nigga.id:unique id of the connected socket
-nigga.on("niggakomessage",(message)=>{
-    // listens to custom message from client, niggakomessage this is same uta front ma pani
+    // manxey represents the connected client socket
+    console.log("a new user has connected",manxey.id)
+    //manxey.id:unique id of the connected socket
+manxey.on("manxeykomessage",(message)=>{
+    // listens to custom message from client, manxeykomessage this is same uta front ma pani
 io.emit("message",message);
 // yedi front end bata message sabai io lai send garde user lai send garde
     console.log(message);
